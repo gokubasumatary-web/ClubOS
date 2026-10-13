@@ -1,0 +1,30 @@
+# Netlify: builds and hosts the React client.
+# API and uploaded images are proxied to the Express backend on Render,
+# so the client keeps using relative /api and /uploads paths.
+
+[build]
+  base    = "client"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Replace with your Render service URL after the backend is deployed.
+[[redirects]]
+  from   = "/api/*"
+  to     = "https://clubos-api.onrender.com/api/:splat"
+  status = 200
+  force  = true
+
+[[redirects]]
+  from   = "/uploads/*"
+  to     = "https://clubos-api.onrender.com/uploads/:splat"
+  status = 200
+  force  = true
+
+# SPA fallback so React Router routes work on refresh.
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200

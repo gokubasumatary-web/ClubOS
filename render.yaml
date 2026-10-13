@@ -1,0 +1,16 @@
+# Render Blueprint: deploys the Express API from server/.
+services:
+  - type: web
+    name: clubos-api
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
