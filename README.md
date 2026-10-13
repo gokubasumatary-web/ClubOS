@@ -2,6 +2,8 @@
 
 A full-stack web application for managing university clubs, events, members, galleries, and messaging.
 
+**Live demo:** https://grand-donut-1e5683.netlify.app/
+
 ---
 
 ## Tech Stack
